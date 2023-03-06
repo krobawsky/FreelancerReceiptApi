@@ -27,9 +27,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROC [dbo].[sp_CreateReceiptFreelancer]
+ALTER PROC [dbo].[sp_CreateReceiptFreelancer]
 (
-	@Id INT OUTPUT,
 	@Logo varchar(255),
 	@CoinType varchar(55),
     @Charge float,
@@ -67,7 +66,6 @@ VALUES(
 	GETDATE()
 )
 
-SET @Id = SCOPE_IDENTITY()
 SELECT TOP 1 * FROM ReceiptFreelancer ORDER BY Id DESC 
 
 END
@@ -90,23 +88,3 @@ SELECT *
 FROM ReceiptFreelancer 
  
 END  
-
-
-
-
-exec [dbo].[sp_CreateReceiptFreelancer]
-@Id = 0,
-@Logo = 'adawd',
-@CoinType = 'adawd',
-@Charge = 1,
-@Title = 'adawd',
-@Description  = 'adawd',
-@Address = 'adawd',
-@FullName = 'adawd',
-@DocumentType = 'adawd',
-@DocumentNumber = '123213'
-
-exec [dbo].[sp_GetReceiptFreelancer]
-
-select * from ReceiptFreelancer;
-

@@ -20,7 +20,6 @@ namespace FreelancersApi.DBContext.Repository
                 using (var db = GetSqlConnection())
                 {
                     var p = new DynamicParameters();
-                    p.Add(name: "@Id", value: 0, dbType: DbType.String, direction: ParameterDirection.Output);
                     p.Add(name: "@Logo", value: data.Logo, dbType: DbType.String, direction: ParameterDirection.Input);
                     p.Add(name: "@CoinType", value: data.CoinType, dbType: DbType.String, direction: ParameterDirection.Input);
                     p.Add(name: "@Charge", value: data.Charge, dbType: DbType.Double, direction: ParameterDirection.Input);
